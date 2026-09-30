@@ -1,0 +1,98 @@
+{
+  "entities": {
+    "users": {
+      "title": "User Profile",
+      "description": "Farmer profile information and settings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "state": { "type": "string" },
+        "district": { "type": "string" },
+        "village": { "type": "string" },
+        "mainCrop": { "type": "string" },
+        "farmSize": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "journalEntries": {
+      "title": "Farm Journal Entry",
+      "description": "Log of farm operations and organic treatments",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "date": { "type": "string" },
+        "plotName": { "type": "string" },
+        "activity": { "type": "string" },
+        "category": { "type": "string" },
+        "inputsUsed": { "type": "string" },
+        "quantity": { "type": "string" },
+        "cost": { "type": "number" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "activity", "date"]
+    },
+    "diseaseDetections": {
+      "title": "Disease Detection Record",
+      "description": "Crop pathology diagnosis history",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "diseaseName": { "type": "string" },
+        "confidenceScore": { "type": "number" },
+        "type": { "type": "string" },
+        "severity": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "userId", "diseaseName"]
+    },
+    "farmListings": {
+      "title": "Farm Marketplace Listing",
+      "description": "Agricultural land and farm listings",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "sellerId": { "type": "string" },
+        "sellerName": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "price": { "type": "number" },
+        "landSizeAcres": { "type": "number" },
+        "state": { "type": "string" },
+        "district": { "type": "string" },
+        "village": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "cropType": { "type": "string" },
+        "soilType": { "type": "string" },
+        "waterAvailability": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "sellerId", "title", "price", "landSizeAcres"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/users" },
+      "description": "Farmer profile documents"
+    },
+    "/journalEntries/{entryId}": {
+      "schema": { "$ref": "#/entities/journalEntries" },
+      "description": "Farmer journal logs"
+    },
+    "/diseaseDetections/{detectionId}": {
+      "schema": { "$ref": "#/entities/diseaseDetections" },
+      "description": "Crop diagnostic history records"
+    },
+    "/farmListings/{listingId}": {
+      "schema": { "$ref": "#/entities/farmListings" },
+      "description": "Marketplace farm listings"
+    }
+  }
+}

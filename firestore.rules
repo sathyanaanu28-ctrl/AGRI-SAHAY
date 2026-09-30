@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Farmer profile documents
+    match /users/{userId} {
+      allow read, write: if request.auth != null;
+    }
+    // Farmer journal logs
+    match /journalEntries/{entryId} {
+      allow read, write: if request.auth != null;
+    }
+    // Crop diagnostic history records
+    match /diseaseDetections/{detectionId} {
+      allow read, write: if request.auth != null;
+    }
+    // Marketplace farm listings
+    match /farmListings/{listingId} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+  }
+}

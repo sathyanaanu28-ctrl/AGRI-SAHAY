@@ -1,0 +1,7 @@
+{
+  "name": "AgriSahay - Smart Eco-Farming & Diagnostics",
+  "description": "AI-powered sustainable agriculture platform featuring crop disease detection, eco-friendly crop plans, compost ratio optimization, and crop rotation strategies in multiple languages.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
